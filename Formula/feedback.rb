@@ -2,25 +2,18 @@
 # frozen_string_literal: true
 
 class Feedback < Formula
-  include Language::Python::Virtualenv
-
   desc "A modern TUI podcast client for the terminal"
   homepage "https://github.com/michellepellon/feedback"
-  url "https://github.com/michellepellon/feedback/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "3e8e7ee55f1c0741d04e5cfd0e9317b7237bd64a700dade0f53cd3870b94a5af"
+  version "0.2.0"
   license "MIT"
-  head "https://github.com/michellepellon/feedback.git", branch: "main"
 
-  depends_on "python@3.12"
+  depends_on arch: :arm64
 
-  # VLC is optional but recommended for audio playback
-  depends_on "libvlc" => :optional
+  url "https://github.com/michellepellon/feedback/releases/download/v0.2.0/feedback-arm64-apple-darwin.tar.gz"
+  sha256 "b87816903500d75a8cf3114541ef1677fa39d80131b2713d35515655b897beda"
 
   def install
-    virtualenv_create(libexec, "python3.12")
-    system libexec/"bin/pip", "install", "--no-deps", "."
-    system libexec/"bin/pip", "install", "."
-    bin.install_symlink libexec/"bin/feedback"
+    bin.install "feedback"
   end
 
   def caveats
@@ -34,6 +27,6 @@ class Feedback < Formula
   end
 
   test do
-    assert_match "feedback", shell_output("#{bin}/feedback --help", 2)
+    assert_match "feedback", shell_output("\#{bin}/feedback --help", 2)
   end
 end
