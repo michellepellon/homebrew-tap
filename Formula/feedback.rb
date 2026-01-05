@@ -7,7 +7,7 @@ class Feedback < Formula
   desc "A modern TUI podcast client for the terminal"
   homepage "https://github.com/michellepellon/feedback"
   url "https://github.com/michellepellon/feedback/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "PLACEHOLDER_SHA256"
+  sha256 "3e8e7ee55f1c0741d04e5cfd0e9317b7237bd64a700dade0f53cd3870b94a5af"
   license "MIT"
   head "https://github.com/michellepellon/feedback.git", branch: "main"
 
